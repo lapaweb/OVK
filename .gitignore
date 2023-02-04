@@ -1,2 +1,5 @@
 node_modules
 .DS_Store
+_header.min.css
+_main.min.css
+libs.js
