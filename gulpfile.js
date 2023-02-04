@@ -10,7 +10,7 @@ var gulp         = require('gulp'),
 gulp.task('browser-sync', function() {
 	browserSync.init({
 		server: {
-			baseDir: 'app'
+			baseDir: './'
 		},
 		notify: false,
 		// online: false, // Work offline without internet connection
@@ -37,31 +37,31 @@ gulp.task('styles', function () {
 
 gulp.task('scripts', function() {
 	return gulp.src([
-		'app/libs/modernizr/modernizr.js',
 		'app/libs/jquery/jquery-1.11.2.min.js',
+		// 'app/libs/selectize/dist/js/selectize.js',
+		'app/libs/modernizr/modernizr.js',
 		'app/libs/Magnific-Popup/jquery.magnific-popup.min.js',
 		'app/libs/waypoints/waypoints.min.js',
 		'app/libs/animate/animate-css.js',
 		'app/libs/animateNumber/jquery.animateNumber.min.js',
 		'app/libs/equalHeights/equalHeights.min.js',
 		'app/libs/owl-carousel/owl.carousel.min.js',
-		'app/libs/selectize/dist/js/selectize.js',
 		])
 		.pipe(concat('libs.js'))
-		.pipe(uglify()) //Minify libs.js
+		// .pipe(uglify()) //Minify libs.js
 		.pipe(gulp.dest('app/js/'))
 		.pipe(browserSync.reload({ stream: true }));
 });
 
 gulp.task('code', function() {
-	return gulp.src('app/**/*.html')
+	return gulp.src('index.html')
 	.pipe(browserSync.reload({ stream: true }))
 });
 
 gulp.task('watch', function () {
 	gulp.watch('sass/**/*.sass', gulp.parallel('styles'));
 	gulp.watch(['app/js/common.js', 'app/libs/**/*.js'], gulp.parallel('scripts'));
-	gulp.watch('app/*.html', gulp.parallel('code'));
+	gulp.watch('index.html', gulp.parallel('code'));
 });
 
 gulp.task('default', gulp.parallel('styles', 'scripts', 'browser-sync', 'watch'));

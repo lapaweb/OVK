@@ -1,8 +1,7 @@
 $(function() {
 
 
-	$("form select").selectize();
-
+	// $("form select").selectize();
 
 
 	$(".carousel-brands").owlCarousel({
