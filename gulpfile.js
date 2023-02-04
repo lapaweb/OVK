@@ -25,7 +25,7 @@ gulp.task('styles', function () {
 		outputStyle: 'expanded',
 		includePaths: require('bourbon').includePaths
 	}).on('error', sass.logError))
-	.pipe(rename({suffix: '.min', prefix : '_'}))
+	.pipe(rename({suffix: '.min'}))
 	.pipe(autoprefixer({
 		// grid: true, // Optional. Enable CSS Grid
 		overrideBrowserslist: ['last 10 versions']
